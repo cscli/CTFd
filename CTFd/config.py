@@ -11,13 +11,13 @@ with open('.ctfd_secret_key', 'a+') as secret:
 
 ##### SERVER SETTINGS #####
 SECRET_KEY = key
-SQLALCHEMY_DATABASE_URI = 'sqlite:///ctfd.db'
+SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_DSN", 'sqlite:///ctfd.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SESSION_TYPE = "filesystem"
 SESSION_FILE_DIR = "/tmp/flask_session"
 SESSION_COOKIE_HTTPONLY = True
 PERMANENT_SESSION_LIFETIME = 604800 # 7 days in seconds
-HOST = ".ctfd.io"
+HOST = ".ctfing.com"
 UPLOAD_FOLDER = os.path.normpath('static/uploads')
 TRUSTED_PROXIES = [
     '^127\.0\.0\.1$',

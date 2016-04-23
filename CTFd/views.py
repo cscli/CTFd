@@ -109,7 +109,7 @@ def static_html(template):
     except TemplateNotFound:
         page = Pages.query.filter_by(route=template).first()
         if page:
-            return render_template_string('{% extends "base.html" %}{% block content %}' + page.html + '{% endblock %}')
+            return render_template("page_base/page_base.html", index=page.html)
         else:
             abort(404)
 
